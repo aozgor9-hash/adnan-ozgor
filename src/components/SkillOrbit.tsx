@@ -49,6 +49,8 @@ export default function SkillOrbit({ anchorRef, progress }: Props) {
       const cy = r.top - box.top + r.height * CENTER_Y;
       const rx = r.width * 0.6 * spread;
       const ry = r.width * 0.24 * spread;
+      // portre küçüldüğünde (kısa ekranlar) etiketler de orantılı küçülür
+      const size = window.innerWidth >= 640 ? Math.min(1, Math.max(0.72, r.width / 520)) : 1;
       const cos = Math.cos(TILT);
       const sin = Math.sin(TILT);
 
@@ -62,8 +64,9 @@ export default function SkillOrbit({ anchorRef, progress }: Props) {
         const y = cy + ox * sin + oy * cos;
         const depth = Math.sin(a); // +1 önde, -1 arkada
         const half = el.offsetWidth / 2;
-        x = Math.min(Math.max(x, half + 12), box.width - half - 12);
-        const scale = 0.78 + 0.3 * (depth + 1) * 0.5;
+        const shown = half * size; // ekranda görünen yarı genişlik (ölçek merkezden)
+        x = Math.min(Math.max(x, shown + 12), box.width - shown - 12);
+        const scale = (0.78 + 0.3 * (depth + 1) * 0.5) * size;
         const alpha = (0.45 + 0.55 * (depth + 1) * 0.5) * fade;
         el.style.transform = `translate3d(${x - half}px, ${y - el.offsetHeight / 2}px, 0) scale(${scale})`;
         el.style.opacity = alpha.toFixed(3);

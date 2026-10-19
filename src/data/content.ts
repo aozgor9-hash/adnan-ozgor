@@ -4,11 +4,14 @@ export const site = {
   name: 'Adnan Özgör',
   firstName: 'Adnan',
   heroHeading: 'Merhaba',
-  // Büyük harfle yazılır: Türkçe büyük harf kuralı İngilizce kelimelerdeki i'yi İ yapmasın
-  heroRole: 'GRAFİK TASARIMCI / CREATIVE DESIGNER',
   heroIntroTitle: 'Ben Adnan Özgör.',
-  heroIntro:
-    'Kaya Holding’de 3 yıllık grafik tasarım deneyimimle, Adobe Creative Cloud araçlarını kullanarak dikkat çekici ve özgün görsel deneyimler tasarlıyorum.',
+  /** Giriş metni: her eleman ayrı paragraf */
+  heroIntro: [
+    'Üç yıllık profesyonel deneyimim boyunca Kaya Palazzo Hotels & Resorts, Kaya Hotels & Resorts ve Abant Su markaları için sosyal medya, video, dijital kreatif ve baskı tasarımları geliştirdim.',
+    'Yaratıcı bakış açım ve teknik yetkinliklerimle markaların kimliğini güçlendiren, özgün ve etkili tasarım çözümleri üretiyorum.',
+  ],
+  /** Giriş metninin altındaki unvan satırı (İngilizce, yazıldığı gibi gösterilir) */
+  heroTagline: ['Graphic Designer', 'Social Media, Digital, Print, Motion & UI/UX Design'],
   /** Hakkımda bölümü: her eleman ayrı paragraf */
   about: [
     'Merhaba, ben Adnan Özgör. Grafik tasarım mezunuyum ve Kaya Holding’de 3 yıl grafik tasarımcı olarak çalıştım.',

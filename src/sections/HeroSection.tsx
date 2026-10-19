@@ -1,5 +1,5 @@
 import { useScroll } from 'framer-motion';
-import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { ContactButton } from '../components/Buttons';
 import AmbientGlow from '../components/AmbientGlow';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -49,11 +49,52 @@ function useFitText<T extends HTMLElement>() {
   return ref;
 }
 
+/**
+ * Portreyi tanıtım metninin altında kalan alana sığdırır: metin uzasa da ekran kısalsa da
+ * yüz yazının üstüne binmez. Çok kısa ekranlarda en küçük boyutta kalır.
+ */
+function usePortraitFit(
+  introRef: RefObject<HTMLDivElement>,
+  portraitRef: RefObject<HTMLDivElement>,
+) {
+  useLayoutEffect(() => {
+    const intro = introRef.current;
+    const portrait = portraitRef.current;
+    const stage = portrait?.parentElement;
+    if (!intro || !portrait || !stage) return;
+    const fit = () => {
+      const vw = window.innerWidth;
+      const max = vw >= 1024 ? 660 : vw >= 768 ? 560 : vw >= 640 ? 480 : Math.min(460, vw * 1.15);
+      const min = Math.min(max, vw < 640 ? 250 : 320);
+      // metnin alt kenarı (FadeIn'in kaydırma animasyonundan etkilenmeyen ölçü)
+      let bottom = intro.offsetHeight;
+      for (let el: HTMLElement | null = intro; el && el !== stage; el = el.offsetParent as HTMLElement | null)
+        bottom += el.offsetTop;
+      const free = stage.clientHeight - bottom - (vw < 640 ? 8 : 16);
+      const w = Math.max(min, Math.min(max, free / FACE_ASPECT));
+      portrait.style.width = `${Math.round(w)}px`;
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+    document.fonts?.addEventListener('loadingdone', fit);
+    const ro = new ResizeObserver(fit);
+    ro.observe(stage);
+    ro.observe(intro);
+    return () => {
+      ro.disconnect();
+      document.fonts?.removeEventListener('loadingdone', fit);
+    };
+  }, [introRef, portraitRef]);
+}
+
 export default function HeroSection() {
   const wrapRef = useRef<HTMLElement>(null);
   const anchorRef = useRef<HTMLDivElement>(null);
   const headingRef = useFitText<HTMLSpanElement>();
   const [faceLive, setFaceLive] = useState(false);
+  const introRef = useRef<HTMLDivElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  usePortraitFit(introRef, portraitRef);
 
   // Hero sabitlenmişken yapılan scroll → yüzün dijitalleşme ilerlemesi
   const { scrollYProgress } = useScroll({ target: wrapRef, offset: ['start start', 'end end'] });
@@ -91,24 +132,39 @@ export default function HeroSection() {
           </div>
         </FadeIn>
 
-        {/* Başlığın altındaki tanıtım */}
-        <FadeIn
-          delay={0.3}
-          y={20}
-          className="relative z-20 mt-4 flex max-w-[360px] flex-col gap-2 px-6 sm:mt-5 md:max-w-[400px] md:gap-3 md:px-10 lg:max-w-[440px]"
-        >
-          <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#D7E2EA]/60 md:text-xs lg:text-sm">
-            {site.heroRole}
-          </span>
-          <p className="font-bold leading-tight text-[#D7E2EA]" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.85rem)' }}>
-            {site.heroIntroTitle}
-          </p>
-          <p
-            className="font-medium leading-relaxed text-[#D7E2EA]/80"
-            style={{ fontSize: 'clamp(0.875rem, 1.1vw, 1.05rem)' }}
+        {/* Başlığın altındaki tanıtım: ortalı */}
+        <FadeIn delay={0.3} y={20} className="relative z-20">
+          <div
+            ref={introRef}
+            data-hero-intro
+            className="mx-auto mt-3 flex max-w-[560px] flex-col items-center gap-2 px-6 text-center sm:mt-4 md:max-w-[640px] md:gap-3 lg:max-w-[720px]"
           >
-            {site.heroIntro}
-          </p>
+            <p className="font-bold leading-tight text-[#D7E2EA]" style={{ fontSize: 'clamp(1.2rem, 2vw, 1.85rem)' }}>
+              {site.heroIntroTitle}
+            </p>
+            {site.heroIntro.map((t) => (
+              <p
+                key={t}
+                className="font-medium leading-snug text-[#D7E2EA]/75"
+                style={{ fontSize: 'clamp(0.8rem, 1.05vw, 1.02rem)' }}
+              >
+                {t}
+              </p>
+            ))}
+            <p
+              lang="en"
+              className="mt-1 flex flex-col items-center font-semibold leading-snug tracking-wide text-[#D7E2EA] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-2.5"
+              style={{ fontSize: 'clamp(0.82rem, 1.1vw, 1.08rem)' }}
+            >
+              <span>{site.heroTagline[0]}</span>
+              <span aria-hidden="true" className="hidden text-[#D7E2EA]/40 sm:inline">
+                |
+              </span>
+              <span className="font-medium text-[#D7E2EA]/85" style={{ textWrap: 'balance' }}>
+                {site.heroTagline[1]}
+              </span>
+            </p>
+          </div>
         </FadeIn>
 
         <div className="relative z-20 mt-auto flex items-end justify-between gap-4 px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
@@ -121,8 +177,12 @@ export default function HeroSection() {
         </div>
 
         {/* Portre çapası: Magnet ile hareket eder, 3D yüz bu kutunun üstüne çizilir */}
-        {/* Genişlik ekran yüksekliğine göre sınırlanır: portre başlık ve metnin altına oturur */}
-        <div className="absolute bottom-0 left-1/2 z-10 w-[min(460px,115vw,calc((100svh_-_340px)/0.858))] -translate-x-1/2 sm:w-[min(480px,calc((100svh_-_300px)/0.858))] md:w-[min(560px,calc((100svh_-_290px)/0.858))] lg:w-[min(660px,calc((100svh_-_280px)/0.858))]">
+        {/* Genişlik, tanıtım metninin altında kalan yüksekliğe göre hesaplanır (usePortraitFit) */}
+        <div
+          ref={portraitRef}
+          data-face-anchor
+          className="absolute bottom-0 left-1/2 z-10 w-[min(400px,100vw,calc((100svh_-_460px)/0.858))] -translate-x-1/2 sm:w-[min(440px,calc((100svh_-_420px)/0.858))] lg:w-[min(560px,calc((100svh_-_420px)/0.858))]"
+        >
           <FadeIn delay={0.6} y={30}>
             <Magnet
               padding={150}
