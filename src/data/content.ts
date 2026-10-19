@@ -14,9 +14,9 @@ export const site = {
   heroTagline: ['Graphic Designer', 'Social Media, Digital, Print, Motion & UI/UX Design'],
   /** Hakkımda bölümü: her eleman ayrı paragraf */
   about: [
-    'Merhaba, ben Adnan Özgör. Grafik tasarım mezunuyum ve Kaya Holding’de 3 yıl grafik tasarımcı olarak çalıştım.',
-    'Grafik tasarım, UI/UX ve 3D tasarım alanlarında çalışmalar üretiyorum. Adobe Creative Suite ve Blender kullanıyorum. Dijital tasarımın yanı sıra baskı hazırlığı ve üretim süreçleri konusunda da deneyim sahibiyim.',
-    'Tasarımda sadeliğe, işlevselliğe ve görsel bütünlüğe önem veriyorum.',
+    'Grafik tasarım alanındaki eğitimimi üç yıllık profesyonel deneyimimle birleştirerek farklı mecralara yönelik yaratıcı tasarım projeleri geliştirdim.',
+    'Adobe Creative Cloud ve Blender kullanarak grafik tasarım, UI/UX, 3D modelleme ve dijital içerik üretimi alanlarında çalışıyorum. Baskı tasarımı, baskı öncesi hazırlık ve üretim süreçlerinde de deneyim sahibiyim.',
+    'Marka kimliğine uygun, tutarlı ve amaca yönelik tasarımlar üretmeye odaklanıyorum. Güncel tasarım trendlerini ve yapay zekâ araçlarını iş akışıma entegre ederek üretim süreçlerini daha verimli hâle getiriyor, yaratıcı çözümlerimi sürekli geliştiriyorum.',
   ],
 };
 
