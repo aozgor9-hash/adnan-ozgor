@@ -79,7 +79,7 @@ export default function ContactSection() {
           className="max-w-[520px] text-center font-light leading-relaxed text-[#D7E2EA]/80"
           style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}
         >
-          Yeni bir marka, arayüz ya da 3D proje için birlikte çalışalım.
+          Aklınızdaki fikri hayata geçirelim.
         </p>
       </FadeIn>
       <FadeIn delay={0.2} y={20} className="w-full max-w-4xl border-b border-[#D7E2EA]/15">
