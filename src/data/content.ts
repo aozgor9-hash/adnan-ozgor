@@ -11,7 +11,7 @@ export const site = {
     'Kaya Holding’de 3 yıllık grafik tasarım deneyimimle, Adobe Creative Cloud araçlarını kullanarak dikkat çekici ve özgün görsel deneyimler tasarlıyorum.',
   /** Hakkımda bölümü: her eleman ayrı paragraf */
   about: [
-    'Merhaba, ben Adnan Özgör. Grafik tasarım mezunuyum ve Kaya Holding’de 2,5 yıl grafik tasarımcı olarak çalıştım.',
+    'Merhaba, ben Adnan Özgör. Grafik tasarım mezunuyum ve Kaya Holding’de 3 yıl grafik tasarımcı olarak çalıştım.',
     'Grafik tasarım, UI/UX ve 3D tasarım alanlarında çalışmalar üretiyorum. Adobe Creative Suite ve Blender kullanıyorum. Dijital tasarımın yanı sıra baskı hazırlığı ve üretim süreçleri konusunda da deneyim sahibiyim.',
     'Tasarımda sadeliğe, işlevselliğe ve görsel bütünlüğe önem veriyorum.',
   ],

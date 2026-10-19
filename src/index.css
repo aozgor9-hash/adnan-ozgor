@@ -108,3 +108,15 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .ambient-glow, .ambient-blob { animation: none; }
 }
+
+/* Aşağı kaydır işaretindeki nokta */
+@keyframes scroll-cue {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+.scroll-cue-dot { animation: scroll-cue 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-dot { animation: none; }
+}

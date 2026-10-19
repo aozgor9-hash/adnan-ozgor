@@ -6,6 +6,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import { FACE_ASPECT } from '../components/faceAspect';
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
+import ScrollCue from '../components/ScrollCue';
 import SkillOrbit from '../components/SkillOrbit';
 import { navLinks, site } from '../data/content';
 import faceUrl from '../assets/face.webp';
@@ -110,7 +111,10 @@ export default function HeroSection() {
           </p>
         </FadeIn>
 
-        <div className="relative z-20 mt-auto flex items-end justify-end gap-4 px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+        <div className="relative z-20 mt-auto flex items-end justify-between gap-4 px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+          <FadeIn delay={0.7} y={20}>
+            <ScrollCue progress={scrollYProgress} />
+          </FadeIn>
           <FadeIn delay={0.5} y={20}>
             <ContactButton />
           </FadeIn>
