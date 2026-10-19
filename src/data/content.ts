@@ -22,41 +22,42 @@ export const site = {
 
 export const navLinks = [
   { label: 'Hakkımda', href: '#hakkimda' },
-  { label: 'Hizmetler', href: '#hizmetler' },
+  { label: 'Yetkinlikler', href: '#yetkinlikler' },
   { label: 'Projeler', href: '#projeler' },
   { label: 'İletişim', href: '#iletisim' },
 ];
 
+/** Yetkinlikler bölümü. Başlıklar büyük harfle yazılır (Türkçe büyük harf kuralı İngilizce kelimeleri bozmasın). */
 export const services = [
   {
     no: '01',
-    name: 'Grafik Tasarım',
-    text: 'Kampanya, basılı materyal, ambalaj ve sosyal medya için markanın diline uygun, dikkat çeken görsel işler.',
+    name: 'GRAFİK TASARIM & DİJİTAL KREATİF',
+    text: 'Dijital kampanyalar, reklam görselleri, web banner’ları ve kurumsal iletişim materyallerinin tasarımı.',
   },
   {
     no: '02',
-    name: 'UI/UX Tasarım',
-    text: 'Kullanıcı akışından wireframe ve prototipe; sade, anlaşılır ve kullanıcıyı hedefe taşıyan arayüzler.',
+    name: 'SOSYAL MEDYA & VİDEO TASARIMI',
+    text: 'Sosyal medya gönderileri, hikâyeler, kampanya kreatifleri, kısa tanıtım videoları ve hareketli görsel içerik üretimi.',
   },
   {
     no: '03',
-    name: '3D Tasarım',
-    text: 'Ürün görselleştirme, obje ve sahne modelleme; ışık, doku ve malzemeyle gerçekçi renderlar.',
+    name: 'BASKI TASARIMI & ÜRETİM HAZIRLIĞI',
+    text: 'Broşür, katalog, menü, afiş ve diğer basılı materyallerin tasarımı; baskı öncesi dosya hazırlığı ve teknik kontroller.',
   },
   {
     no: '04',
-    name: 'Marka Kimliği',
-    text: 'Logodan bütün marka sistemine kadar tutarlı, akılda kalan ve markayı doğru anlatan kimlikler.',
+    name: 'UI/UX TASARIMI',
+    text: 'Web ve mobil arayüzler, wireframe, kullanıcı akışları ve prototipler üzerinden işlevsel dijital deneyimler tasarlama.',
   },
   {
     no: '05',
-    name: 'MOTION & DİJİTAL',
-    text: 'Hareketli grafikler ve kısa animasyonlarla markaya enerji katan dijital içerikler.',
+    name: '3D TASARIM & GÖRSELLEŞTİRME',
+    text: 'Blender ile 3D modelleme, malzeme ve ışık düzenlemeleri, sahne oluşturma ve ürün görselleştirme.',
   },
   {
     no: '06',
-    name: 'Baskı Çalışması',
-    text: 'Katalog, broşür, afiş, ambalaj ve açık hava işleri için baskıya hazır dosyalar; renk, kesim payı ve üretim sürecinin takibi.',
+    name: 'MARKA KİMLİĞİ & GÖRSEL TUTARLILIK',
+    text: 'Tipografi, renk sistemleri ve görsel uygulamalar aracılığıyla marka bütünlüğünü farklı iletişim mecralarında sürdürme.',
   },
 ];
 

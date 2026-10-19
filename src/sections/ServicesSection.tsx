@@ -4,15 +4,15 @@ import { services } from '../data/content';
 export default function ServicesSection() {
   return (
     <section
-      id="hizmetler"
+      id="yetkinlikler"
       className="rounded-t-[40px] bg-white px-5 py-20 text-[#0C0C0C] sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <FadeIn y={40}>
         <h2
           className="mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+          style={{ fontSize: 'clamp(2.5rem, 10vw, 160px)' }}
         >
-          Hizmetler
+          Yetkinlikler
         </h2>
       </FadeIn>
 
@@ -30,7 +30,8 @@ export default function ServicesSection() {
           >
             <span
               className="shrink-0 font-black leading-[0.85] tabular-nums"
-              style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
+              // sabit genişlik: 01, 02… farklı genişlikte olsa da başlıklar aynı hizada başlar
+              style={{ fontSize: 'clamp(3rem, 10vw, 140px)', width: '1.42em' }}
             >
               {s.no}
             </span>
