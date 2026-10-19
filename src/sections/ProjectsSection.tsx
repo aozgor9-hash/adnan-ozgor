@@ -32,7 +32,7 @@ function Visual({ project, slot, className = '' }: { project: Project; slot: num
 }
 
 /** Görsel satırının yüksekliği: kart her ekranda görünür alana sığar */
-const ROW_HEIGHT = 'clamp(260px, min(38vw, calc(85vh - 290px)), 560px)';
+const ROW_HEIGHT = 'clamp(260px, min(38vw, calc(85vh - 340px)), 560px)';
 
 function Card({
   project,
@@ -76,6 +76,13 @@ function Card({
           </div>
           <LiveProjectButton onClick={() => openGallery(project.slug)} />
         </div>
+
+        <p
+          className="-mt-1 max-w-3xl px-2 font-light leading-snug text-[#D7E2EA]/75 sm:-mt-2 sm:px-4"
+          style={{ fontSize: 'clamp(0.875rem, 1.3vw, 1.15rem)' }}
+        >
+          {project.description}
+        </p>
 
         <div className="flex gap-3 sm:gap-4" style={{ height: ROW_HEIGHT }}>
           <div className="flex w-[40%] flex-col gap-3 sm:gap-4">

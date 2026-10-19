@@ -19,6 +19,8 @@ export type Project = {
   slug: string;
   name: string;
   category: string;
+  /** Proje kartında başlığın altında görünen kısa açıklama */
+  description: string;
   cover: [CoverSlot, CoverSlot, CoverSlot];
   /** Galeri sayfasında bu sırayla görünür */
   media: Media[];
@@ -49,6 +51,8 @@ export const projects: Project[] = [
     slug: 'abant-su',
     name: 'Abant Su',
     category: 'Kaya Holding · Marka ve Sosyal Medya',
+    description:
+      'Ürün odaklı reklam görselleri ve sosyal medya tasarımları.',
     palette: ['#06263D', '#1D6FA3', '#9FD8F2'],
     cover: [
       { src: 'projects/abant-su/02.webp' },
@@ -75,6 +79,8 @@ export const projects: Project[] = [
     slug: 'cgi',
     name: 'CGI Animasyon',
     category: 'Abant Su · Palazzo Golf Club',
+    description:
+      'Abant Su ve Kaya Palazzo Golf Club için 3D reklam panosu animasyonları.',
     palette: ['#0B1A2A', '#2E6A8E', '#BFE3F5'],
     cover: [
       { src: 'projects/cgi/01-kare.webp' },
@@ -91,6 +97,8 @@ export const projects: Project[] = [
     slug: 'kreatif-icerik',
     name: 'Kreatif İçerik',
     category: 'Kaya Hotels · Kaya Palazzo · Abant',
+    description:
+      'Kaya Hotels, Kaya Palazzo ve Abant için kampanya görselleri, e-posta tasarımları ve kısa videolar.',
     palette: ['#0C211C', '#2F5E4E', '#CFAE6A'],
     cover: [
       { src: 'projects/kreatif-icerik/09.webp' },
@@ -117,6 +125,8 @@ export const projects: Project[] = [
     slug: 'ui-ux',
     name: 'UI/UX Tasarım',
     category: 'ABANT APP · PILLPAY VE PLAY MUSIC (KONSEPT)',
+    description:
+      'PillPay, Abant App ve Play Music için mobil arayüz çalışmaları ve tanıtım animasyonları.',
     palette: ['#120318', '#5B1C86', '#C9B6F2'],
     cover: [
       { src: 'projects/ui-ux/03.webp' },
