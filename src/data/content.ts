@@ -87,10 +87,10 @@ export const music: { src: string; title: string; artist?: string } = {
 };
 
 /** Projelerin altında görünen dil yetkinlikleri (İngilizce yazılır, olduğu gibi gösterilir) */
-export const languages = [
-  { code: 'EN', name: 'English', level: 'Professional Working Proficiency' },
-  { code: 'RU', name: 'Russian', level: 'Basic' },
-  { code: 'JP', name: 'Japanese', level: 'Basic' },
+export const languages: { code: string; flag: 'GB' | 'RU' | 'JP'; name: string; level: string; primary?: boolean }[] = [
+  { code: 'EN', flag: 'GB', name: 'English', level: 'Professional Working Proficiency', primary: true },
+  { code: 'RU', flag: 'RU', name: 'Russian', level: 'Basic' },
+  { code: 'JP', flag: 'JP', name: 'Japanese', level: 'Basic' },
 ];
 
 /** İletişim bilgileri */

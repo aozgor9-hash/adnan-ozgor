@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import AutoVideo from '../components/AutoVideo';
 import { LiveProjectButton } from '../components/Buttons';
 import FadeIn from '../components/FadeIn';
+import { FLAGS } from '../components/Flags';
 import { ProjectVisual } from '../components/Placeholders';
 import { languages } from '../data/content';
 import { projects, type Project } from '../data/projects';
@@ -122,31 +123,69 @@ export default function ProjectsSection() {
       </div>
 
       {/* Dil yetkinlikleri */}
-      <FadeIn
-        y={30}
-        className="mx-auto mt-16 flex max-w-6xl flex-col gap-6 rounded-[32px] border-2 border-[#D7E2EA]/25 px-6 py-7 sm:mt-24 sm:gap-8 sm:rounded-[40px] sm:px-10 sm:py-9 md:rounded-[60px] md:px-12 md:py-10"
-      >
-        <h3 className="text-xs font-light uppercase tracking-[0.2em] text-[#D7E2EA]/60 sm:text-sm">Dil Yetkinliği</h3>
-        <ul lang="en" className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
-          {languages.map((l) => (
-            <li key={l.code} className="flex items-start gap-4 border-t border-[#D7E2EA]/15 pt-5 sm:flex-col sm:gap-2">
-              <span
-                className="hero-heading w-[2.6ch] shrink-0 font-black leading-[0.85] sm:w-auto"
-                style={{ fontSize: 'clamp(2.2rem, 4.4vw, 4rem)' }}
-              >
-                {l.code}
-              </span>
-              <div className="flex min-w-0 flex-col gap-1">
-                <span className="font-medium leading-tight text-[#D7E2EA]" style={{ fontSize: 'clamp(1.15rem, 1.8vw, 1.6rem)' }}>
-                  {l.name}
-                </span>
-                <span className="font-light leading-snug text-[#D7E2EA]/65" style={{ fontSize: 'clamp(0.85rem, 1.15vw, 1.05rem)' }}>
-                  {l.level}
-                </span>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <FadeIn y={30} className="mx-auto mt-16 max-w-6xl sm:mt-24">
+        <div
+          lang="en"
+          className="relative overflow-hidden rounded-[32px] border-2 border-[#D7E2EA]/20 bg-gradient-to-br from-[#14161a] via-[#0C0C0C] to-[#0C0C0C] px-6 pb-3 pt-7 sm:rounded-[40px] sm:px-10 sm:pb-4 sm:pt-9 md:rounded-[60px] md:px-14 md:pt-11"
+        >
+          {/* hafif mavi parıltı: sitenin hologram rengiyle uyumlu */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-40 blur-3xl"
+            style={{ background: 'radial-gradient(circle, rgba(61,158,255,0.55), transparent 70%)' }}
+          />
+          <div className="relative flex items-end justify-between gap-4 border-b border-[#D7E2EA]/25 pb-5 sm:pb-7">
+            <h3
+              lang="tr"
+              className="hero-heading font-black uppercase leading-none tracking-tight"
+              style={{ fontSize: 'clamp(1.5rem, 3.4vw, 3rem)' }}
+            >
+              DİL YETKİNLİKLERİ
+            </h3>
+          </div>
+          <ul className="relative">
+            {languages.map((l, i) => {
+              const Flag = FLAGS[l.flag];
+              return (
+                <li
+                  key={l.code}
+                  className={`group flex items-center gap-4 py-5 transition-colors duration-300 sm:gap-6 sm:py-7 ${
+                    i < languages.length - 1 ? 'border-b border-[#D7E2EA]/10' : ''
+                  }`}
+                >
+                  <span className="relative h-7 w-10 shrink-0 overflow-hidden rounded-md ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-[54px] sm:rounded-lg">
+                    <Flag />
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-black/25"
+                    />
+                  </span>
+                  <span className="w-[2.2ch] shrink-0 font-bold text-[#D7E2EA]" style={{ fontSize: 'clamp(1rem, 1.7vw, 1.5rem)' }}>
+                    {l.code}
+                  </span>
+                  {/* telefonda seviye ismin altına iner, geniş ekranda sağa yaslanır */}
+                  <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                    <span
+                      className="font-light leading-tight text-[#D7E2EA] transition-transform duration-300 group-hover:translate-x-1"
+                      style={{ fontSize: 'clamp(1.1rem, 2.2vw, 2rem)' }}
+                    >
+                      {l.name}
+                    </span>
+                    <span
+                      className={`rounded-full px-3 py-1 text-[11px] font-medium leading-tight sm:px-5 sm:py-2 sm:text-sm ${
+                        l.primary
+                          ? 'border border-[#3D9EFF]/50 bg-[#3D9EFF]/10 text-[#CFE6FF] shadow-[0_0_24px_-8px_rgba(61,158,255,0.7)]'
+                          : 'border border-[#D7E2EA]/20 text-[#D7E2EA]/70'
+                      }`}
+                    >
+                      {l.level}
+                    </span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </FadeIn>
     </section>
   );
