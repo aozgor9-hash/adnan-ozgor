@@ -7,7 +7,7 @@ export const site = {
   heroRole: 'Grafik Tasarımcı / Creative Designer',
   heroIntroTitle: 'Ben Adnan Özgör.',
   heroIntro:
-    'Kaya Holding’de 2,5 yıllık grafik tasarım deneyimimle, Adobe Creative Cloud araçlarını kullanarak dikkat çekici ve özgün görsel deneyimler tasarlıyorum.',
+    'Kaya Holding’de 3 yıllık grafik tasarım deneyimimle, Adobe Creative Cloud araçlarını kullanarak dikkat çekici ve özgün görsel deneyimler tasarlıyorum.',
   /** Hakkımda bölümü: her eleman ayrı paragraf */
   about: [
     'Merhaba, ben Adnan Özgör. Grafik tasarım mezunuyum ve Kaya Holding’de 2,5 yıl grafik tasarımcı olarak çalıştım.',
