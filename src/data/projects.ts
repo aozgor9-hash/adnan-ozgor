@@ -116,7 +116,7 @@ export const projects: Project[] = [
     no: '04',
     slug: 'ui-ux',
     name: 'UI/UX Tasarım',
-    category: 'PILLPAY · ABANT APP · PLAY MUSIC (KONSEPT)',
+    category: 'ABANT APP · PILLPAY VE PLAY MUSIC (KONSEPT)',
     palette: ['#120318', '#5B1C86', '#C9B6F2'],
     cover: [
       { src: 'projects/ui-ux/03.webp' },
@@ -124,7 +124,7 @@ export const projects: Project[] = [
       { src: 'projects/ui-ux/01.webp', video: 'projects/ui-ux/01.mp4' },
     ],
     media: [
-      vid('ui-ux', '01', 1280, 676, 'PillPay uygulama tanıtımı'),
+      { ...vid('ui-ux', '01', 1280, 676, 'PillPay konsept uygulama tanıtımı'), badge: 'Konsept çalışma' },
       vid('ui-ux', '02', 960, 540, 'Abant App uygulama tanıtımı'),
       { ...vid('ui-ux', '03', 960, 540, 'Play Music konsept uygulama tanıtımı'), badge: 'Konsept çalışma' },
     ],
