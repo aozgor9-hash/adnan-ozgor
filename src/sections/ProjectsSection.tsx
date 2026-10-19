@@ -4,6 +4,7 @@ import AutoVideo from '../components/AutoVideo';
 import { LiveProjectButton } from '../components/Buttons';
 import FadeIn from '../components/FadeIn';
 import { ProjectVisual } from '../components/Placeholders';
+import { languages } from '../data/content';
 import { projects, type Project } from '../data/projects';
 import { openGallery } from '../router';
 
@@ -119,6 +120,34 @@ export default function ProjectsSection() {
           <Card key={p.no} project={p} index={i} total={projects.length} progress={scrollYProgress} />
         ))}
       </div>
+
+      {/* Dil yetkinlikleri */}
+      <FadeIn
+        y={30}
+        className="mx-auto mt-16 flex max-w-6xl flex-col gap-6 rounded-[32px] border-2 border-[#D7E2EA]/25 px-6 py-7 sm:mt-24 sm:gap-8 sm:rounded-[40px] sm:px-10 sm:py-9 md:rounded-[60px] md:px-12 md:py-10"
+      >
+        <h3 className="text-xs font-light uppercase tracking-[0.2em] text-[#D7E2EA]/60 sm:text-sm">Dil Yetkinliği</h3>
+        <ul lang="en" className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
+          {languages.map((l) => (
+            <li key={l.code} className="flex items-start gap-4 border-t border-[#D7E2EA]/15 pt-5 sm:flex-col sm:gap-2">
+              <span
+                className="hero-heading w-[2.6ch] shrink-0 font-black leading-[0.85] sm:w-auto"
+                style={{ fontSize: 'clamp(2.2rem, 4.4vw, 4rem)' }}
+              >
+                {l.code}
+              </span>
+              <div className="flex min-w-0 flex-col gap-1">
+                <span className="font-medium leading-tight text-[#D7E2EA]" style={{ fontSize: 'clamp(1.15rem, 1.8vw, 1.6rem)' }}>
+                  {l.name}
+                </span>
+                <span className="font-light leading-snug text-[#D7E2EA]/65" style={{ fontSize: 'clamp(0.85rem, 1.15vw, 1.05rem)' }}>
+                  {l.level}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </FadeIn>
     </section>
   );
 }

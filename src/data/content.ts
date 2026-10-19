@@ -86,6 +86,13 @@ export const music: { src: string; title: string; artist?: string } = {
   title: 'Arka plan müziği',
 };
 
+/** Projelerin altında görünen dil yetkinlikleri (İngilizce yazılır, olduğu gibi gösterilir) */
+export const languages = [
+  { code: 'EN', name: 'English', level: 'Professional Working Proficiency' },
+  { code: 'RU', name: 'Russian', level: 'Basic' },
+  { code: 'JP', name: 'Japanese', level: 'Basic' },
+];
+
 /** İletişim bilgileri */
 export const contact = {
   email: 'aozgor9@gmail.com',

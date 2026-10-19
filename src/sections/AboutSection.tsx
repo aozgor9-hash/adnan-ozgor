@@ -69,16 +69,12 @@ export default function AboutSection() {
               Hakkımda
             </h2>
           </FadeIn>
-          <div className="flex max-w-[600px] flex-col gap-5 sm:gap-6">
-            {site.about.map((para, i) => (
-              <AnimatedText
-                key={i}
-                text={para}
-                className="text-center font-medium leading-relaxed text-[#D7E2EA]"
-                style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
-              />
-            ))}
-          </div>
+          <AnimatedText
+            paragraphs={site.about}
+            className="flex max-w-[600px] flex-col gap-5 sm:gap-6"
+            pClassName="text-center font-medium leading-relaxed text-[#D7E2EA]"
+            pStyle={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
+          />
         </div>
         <ContactButton />
       </div>
