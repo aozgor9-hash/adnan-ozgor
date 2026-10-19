@@ -12,8 +12,9 @@ import * as THREE from 'three';
  * Her şey ilerlemenin saf bir fonksiyonu olduğu için geri sarma bedavadır.
  */
 
-/** Doku oranı (yükseklik / genişlik). Hero'daki çapa kutusu da bu oranı kullanır. */
-export const FACE_ASPECT = 878 / 1024;
+import { FACE_ASPECT } from './faceAspect';
+
+export { FACE_ASPECT };
 const ASPECT = FACE_ASPECT;
 const DEPTH = 0.22; // kabartma derinliği (genişliğe oranla)
 const DEPTH_CENTER = 0.55;

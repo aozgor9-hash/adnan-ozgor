@@ -1,14 +1,17 @@
 import { useScroll } from 'framer-motion';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ContactButton } from '../components/Buttons';
 import AmbientGlow from '../components/AmbientGlow';
-import Face3D from '../components/Face3D';
-import { FACE_ASPECT } from '../components/FaceScene';
+import ErrorBoundary from '../components/ErrorBoundary';
+import { FACE_ASPECT } from '../components/faceAspect';
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import SkillOrbit from '../components/SkillOrbit';
 import { navLinks, site } from '../data/content';
 import faceUrl from '../assets/face.webp';
+
+// 3D sahne (three.js) ayrı dosyada yüklenir: sayfa önce açılır, yüz hazır olunca fotoğrafın yerini alır
+const Face3D = lazy(() => import('../components/Face3D'));
 import depthUrl from '../assets/face-depth.png';
 
 /** Başlığı satıra tam sığacak boyuta ölçekler (isim uzunluğu değişse de taşmaz). */
@@ -140,13 +143,18 @@ export default function HeroSection() {
 
         <SkillOrbit anchorRef={anchorRef} progress={scrollYProgress} />
 
-        <Face3D
-          faceUrl={faceUrl}
-          depthUrl={depthUrl}
-          anchorRef={anchorRef}
-          progress={scrollYProgress}
-          onReady={setFaceLive}
-        />
+        {/* 3D yüklenemezse ya da hata verirse normal fotoğraf görünmeye devam eder */}
+        <ErrorBoundary onError={() => setFaceLive(false)}>
+          <Suspense fallback={null}>
+            <Face3D
+              faceUrl={faceUrl}
+              depthUrl={depthUrl}
+              anchorRef={anchorRef}
+              progress={scrollYProgress}
+              onReady={setFaceLive}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { useLayoutEffect } from 'react';
+import ErrorBoundary from './components/ErrorBoundary';
 import MusicToggle from './components/MusicToggle';
 import { projects } from './data/projects';
 import ProjectGallery from './pages/ProjectGallery';
@@ -34,15 +35,34 @@ export default function App() {
     <>
       {/* Ana sayfa galeri açıkken gizlenir ama kaybolmaz: geri dönünce her şey yerinde */}
       <main className="bg-[#0C0C0C]" style={{ overflowX: 'clip' }} hidden={!!project}>
-        <HeroSection />
-        <MarqueeSection />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <ContactSection />
+        {/* Her bölüm ayrı korunur: biri hata verirse diğerleri açık kalır */}
+        <ErrorBoundary>
+          <HeroSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <MarqueeSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <AboutSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ServicesSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProjectsSection />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ContactSection />
+        </ErrorBoundary>
       </main>
-      {project && <ProjectGallery key={project.slug} project={project} />}
-      <MusicToggle />
+      {project && (
+        <ErrorBoundary>
+          <ProjectGallery key={project.slug} project={project} />
+        </ErrorBoundary>
+      )}
+      <ErrorBoundary>
+        <MusicToggle />
+      </ErrorBoundary>
     </>
   );
 }
