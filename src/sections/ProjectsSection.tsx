@@ -125,7 +125,6 @@ export default function ProjectsSection() {
       {/* Dil yetkinlikleri */}
       <FadeIn y={30} className="mx-auto mt-16 max-w-6xl sm:mt-24">
         <div
-          lang="en"
           className="relative overflow-hidden rounded-[32px] border-2 border-[#D7E2EA]/20 bg-gradient-to-br from-[#14161a] via-[#0C0C0C] to-[#0C0C0C] px-6 pb-3 pt-7 sm:rounded-[40px] sm:px-10 sm:pb-4 sm:pt-9 md:rounded-[60px] md:px-14 md:pt-11"
         >
           {/* hafif mavi parıltı: sitenin hologram rengiyle uyumlu */}
@@ -136,7 +135,6 @@ export default function ProjectsSection() {
           />
           <div className="relative flex items-end justify-between gap-4 border-b border-[#D7E2EA]/25 pb-5 sm:pb-7">
             <h3
-              lang="tr"
               className="hero-heading font-black uppercase leading-none tracking-tight"
               style={{ fontSize: 'clamp(1.5rem, 3.4vw, 3rem)' }}
             >
@@ -166,6 +164,7 @@ export default function ProjectsSection() {
                   {/* telefonda seviye ismin altına iner, geniş ekranda sağa yaslanır */}
                   <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <span
+                      lang="en"
                       className="font-light leading-tight text-[#D7E2EA] transition-transform duration-300 group-hover:translate-x-1"
                       style={{ fontSize: 'clamp(1.1rem, 2.2vw, 2rem)' }}
                     >

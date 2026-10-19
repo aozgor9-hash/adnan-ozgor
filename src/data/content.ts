@@ -86,11 +86,11 @@ export const music: { src: string; title: string; artist?: string } = {
   title: 'Arka plan müziği',
 };
 
-/** Projelerin altında görünen dil yetkinlikleri (İngilizce yazılır, olduğu gibi gösterilir) */
+/** Projelerin altında görünen dil yetkinlikleri (dil adları İngilizce, seviyeler Türkçe) */
 export const languages: { code: string; flag: 'GB' | 'RU' | 'JP'; name: string; level: string; primary?: boolean }[] = [
-  { code: 'EN', flag: 'GB', name: 'English', level: 'Professional Working Proficiency', primary: true },
-  { code: 'RU', flag: 'RU', name: 'Russian', level: 'Basic' },
-  { code: 'JP', flag: 'JP', name: 'Japanese', level: 'Basic' },
+  { code: 'EN', flag: 'GB', name: 'English', level: 'Profesyonel Çalışma Düzeyi', primary: true },
+  { code: 'RU', flag: 'RU', name: 'Russian', level: 'Temel Düzey' },
+  { code: 'JP', flag: 'JP', name: 'Japanese', level: 'Temel Düzey' },
 ];
 
 /** İletişim bilgileri */
