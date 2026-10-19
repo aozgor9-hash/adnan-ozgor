@@ -129,7 +129,7 @@ export const projects: Project[] = [
       { ...vid('ui-ux', '03', 960, 540, 'Play Music konsept uygulama tanıtımı'), badge: 'Konsept çalışma' },
       // Tanıtım videolarından sonra mockup tasarımları
       { ...img('ui-ux', '04.webp', 1600, 1200, 'PillPay konsept uygulama ekranları'), badge: 'Konsept çalışma' },
-      img('ui-ux', '05.webp', 1600, 1200, 'Abant App uygulama ekranları'),
+      img('ui-ux', '05-abant-v2.webp', 1600, 1200, 'Abant App uygulama ekranları'),
       { ...img('ui-ux', '06.webp', 1600, 1200, 'Play Music konsept uygulama ekranları'), badge: 'Konsept çalışma' },
     ],
   },
