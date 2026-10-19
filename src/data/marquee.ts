@@ -31,4 +31,7 @@ export const MARQUEE_POOL: string[] = [
   'marquee/27.webp',
   'marquee/28.webp',
   'marquee/29.webp',
+  'marquee/30.webp',
+  'marquee/31.webp',
+  'marquee/32.webp',
 ];

@@ -34,7 +34,8 @@ function toColumns(media: Media[], n: number) {
 
 export default function ProjectGallery({ project }: { project: Project }) {
   const media = project.media;
-  const onlyVideo = media.length > 0 && media.every((m) => m.kind === 'video');
+  // Hepsi yatay (video, mockup) ise büyük ve alt alta; dikey görseller varsa sütunlu düzen
+  const onlyVideo = media.length > 0 && media.every((m) => m.w >= m.h);
   const columns = useColumnCount();
 
   useEffect(() => {
