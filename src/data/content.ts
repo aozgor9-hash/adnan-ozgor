@@ -4,7 +4,8 @@ export const site = {
   name: 'Adnan Özgör',
   firstName: 'Adnan',
   heroHeading: 'Merhaba',
-  heroRole: 'Grafik Tasarımcı / Creative Designer',
+  // Büyük harfle yazılır: Türkçe büyük harf kuralı İngilizce kelimelerdeki i'yi İ yapmasın
+  heroRole: 'GRAFİK TASARIMCI / CREATIVE DESIGNER',
   heroIntroTitle: 'Ben Adnan Özgör.',
   heroIntro:
     'Kaya Holding’de 3 yıllık grafik tasarım deneyimimle, Adobe Creative Cloud araçlarını kullanarak dikkat çekici ve özgün görsel deneyimler tasarlıyorum.',
@@ -46,7 +47,7 @@ export const services = [
   },
   {
     no: '05',
-    name: 'Motion & Dijital',
+    name: 'MOTION & DİJİTAL',
     text: 'Hareketli grafikler ve kısa animasyonlarla markaya enerji katan dijital içerikler.',
   },
   {

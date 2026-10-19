@@ -112,7 +112,7 @@ export const projects: Project[] = [
     no: '04',
     slug: 'ui-ux',
     name: 'UI/UX Tasarım',
-    category: 'PillPay · Abant App · Play Music',
+    category: 'PILLPAY · ABANT APP · PLAY MUSIC',
     palette: ['#120318', '#5B1C86', '#C9B6F2'],
     cover: [
       { src: 'projects/ui-ux/03.webp' },

@@ -80,6 +80,7 @@ export default function SkillOrbit({ anchorRef, progress }: Props) {
       {tools.map((tool, i) => (
         <div
           key={tool.name}
+          lang="en"
           ref={(el) => {
             chipRefs.current[i] = el;
           }}
