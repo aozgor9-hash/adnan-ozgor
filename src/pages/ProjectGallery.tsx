@@ -96,7 +96,12 @@ export default function ProjectGallery({ project }: { project: Project }) {
 
 function Tile({ m, i }: { m: Media; i: number }) {
   return (
-    <FadeIn role="listitem" delay={(i % 3) * 0.08} y={30}>
+    <FadeIn role="listitem" delay={(i % 3) * 0.08} y={30} className="relative">
+      {m.badge && (
+        <span className="pointer-events-none absolute left-4 top-4 z-10 rounded-full border border-[#D7E2EA]/30 bg-[#0C0C0C]/70 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#D7E2EA] backdrop-blur-md sm:left-5 sm:top-5 sm:text-xs">
+          {m.badge}
+        </span>
+      )}
       {m.kind === 'video' ? (
         <AutoVideo
           src={m.src}

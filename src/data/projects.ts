@@ -2,9 +2,13 @@
 // Dosyalar `public/projects/<slug>/` altında. Yeni bir görsel eklemek için dosyayı
 // o klasöre koy ve aşağıdaki `media` listesine sırayla yaz.
 
-export type Media =
+export type Media = (
   | { kind: 'image'; src: string; w: number; h: number; alt: string }
-  | { kind: 'video'; src: string; poster: string; w: number; h: number; alt: string };
+  | { kind: 'video'; src: string; poster: string; w: number; h: number; alt: string }
+) & {
+  /** Galeride görselin köşesinde görünen küçük etiket, örn. 'Konsept çalışma' */
+  badge?: string;
+};
 
 /** Proje kartındaki üç alan: [sol üst, sol alt, sağ büyük]. Video verilirse kartta sessiz oynar. */
 export type CoverSlot = { src: string; video?: string };
@@ -112,7 +116,7 @@ export const projects: Project[] = [
     no: '04',
     slug: 'ui-ux',
     name: 'UI/UX Tasarım',
-    category: 'PILLPAY · ABANT APP · PLAY MUSIC',
+    category: 'PILLPAY · ABANT APP · PLAY MUSIC (KONSEPT)',
     palette: ['#120318', '#5B1C86', '#C9B6F2'],
     cover: [
       { src: 'projects/ui-ux/03.webp' },
@@ -122,7 +126,7 @@ export const projects: Project[] = [
     media: [
       vid('ui-ux', '01', 1280, 676, 'PillPay uygulama tanıtımı'),
       vid('ui-ux', '02', 960, 540, 'Abant App uygulama tanıtımı'),
-      vid('ui-ux', '03', 960, 540, 'Play Music uygulama tanıtımı'),
+      { ...vid('ui-ux', '03', 960, 540, 'Play Music konsept uygulama tanıtımı'), badge: 'Konsept çalışma' },
     ],
   },
 ];
